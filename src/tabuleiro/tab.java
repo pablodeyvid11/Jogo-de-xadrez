@@ -27,5 +27,11 @@ public class tab {
 		this.colunas = colunas;
 	}
 	
+	public peca Peca(int linha, int coluna) {
+		return pecas[linha][coluna];
+	}
 	
+	public peca Peca(posicao pos) {
+		return pecas[pos.getLinha()][pos.getColuna()];
+	}
 }
