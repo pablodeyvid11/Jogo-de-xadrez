@@ -1,12 +1,16 @@
 package xadresCamada;
 
+import tabuleiro.posicao;
 import tabuleiro.tab;
+import xadresCamada.pecas.Rei;
+import xadresCamada.pecas.torre;
 
 public class partidaXadrez {
 	private tab tabuleiro;
 	
 	public partidaXadrez() {
 		tabuleiro = new tab(8, 8);
+		iniciarPartida();
 	}
 	
 	public pecaXadrez[][] getPecasXadrez(){
@@ -18,5 +22,11 @@ public class partidaXadrez {
 			}
 		}
 		return mat; 
+	}
+	
+	private void iniciarPartida() {
+		tabuleiro.colocarPeca(new torre(tabuleiro, cor.BRANCO), new posicao(2, 1));
+		tabuleiro.colocarPeca(new Rei(tabuleiro, cor.PRETO), new posicao(0, 4));
+		tabuleiro.colocarPeca(new Rei(tabuleiro, cor.BRANCO), new posicao(7, 4));
 	}
 }

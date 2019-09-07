@@ -34,4 +34,9 @@ public class tab {
 	public peca Peca(posicao pos) {
 		return pecas[pos.getLinha()][pos.getColuna()];
 	}
+	
+	public void colocarPeca(peca pes, posicao pos) {
+		pecas[pos.getLinha()][pos.getColuna()]  = pes;
+		pes.pos = pos;
+	}
 }
