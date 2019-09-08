@@ -59,6 +59,13 @@ public class UI {
 		System.out.println();
 		System.out.println("Turno: " + parXadr.getTurno());
 		System.out.println("Esperando o jogador: " + parXadr.getJogadorAtual());
+		if (parXadr.getCheck()) {
+			if (parXadr.getCorDoCheck() == cor.BRANCO) {
+				System.out.print(ANSI_WHITE + "CHECK!" + ANSI_RESET);
+			} else {
+				System.out.print(ANSI_YELLOW + "CHECK!" + ANSI_RESET);
+			}
+		}
 	}
 	
 	public static void escreverTabuleiro(pecaXadrez[][] pecaxadr) {
