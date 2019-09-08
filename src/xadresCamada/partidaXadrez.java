@@ -1,5 +1,8 @@
 package xadresCamada;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import tabuleiro.peca;
 import tabuleiro.posicao;
 import tabuleiro.tab;
@@ -11,6 +14,9 @@ public class partidaXadrez {
 	private cor jogadorAtual;
 	private tab tabuleiro;
 
+	List<peca> pecasNoTabuleiro = new ArrayList<>();
+	List<peca> pecasCapturadas = new ArrayList<>();
+	
 	public partidaXadrez() {
 		tabuleiro = new tab(8, 8);
 		turno = 1;
@@ -57,6 +63,10 @@ public class partidaXadrez {
 		peca p = tabuleiro.removerPeca(origem);
 		peca pecaCapturada = tabuleiro.removerPeca(fim);
 		tabuleiro.colocarPeca(p, fim);
+		if (pecaCapturada != null) {
+			pecasNoTabuleiro.remove(pecaCapturada);
+			pecasCapturadas.add(pecaCapturada);
+		}
 		return pecaCapturada;
 	}
 
@@ -87,6 +97,7 @@ public class partidaXadrez {
 
 	private void lugarNovaPeca(char coluna, int linha, pecaXadrez peca) {
 		tabuleiro.colocarPeca(peca, new xadrezPosicao(coluna, linha).toPosicao());
+		pecasNoTabuleiro.add(peca);
 	}
 
 	private void iniciarPartida() {
