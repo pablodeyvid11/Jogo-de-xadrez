@@ -16,6 +16,7 @@ public class partidaXadrez {
 	private tab tabuleiro;
 	private boolean check;
 	private cor corDoCheck;
+	private boolean checkMate;
 
 	List<peca> pecasNoTabuleiro = new ArrayList<>();
 	List<peca> pecasCapturadas = new ArrayList<>();
@@ -26,6 +27,10 @@ public class partidaXadrez {
 		jogadorAtual = cor.BRANCO;
 		check = false;
 		iniciarPartida();
+	}
+	
+	public boolean getCheckMate() {
+		return checkMate;
 	}
 
 	public int getTurno() {
@@ -75,8 +80,12 @@ public class partidaXadrez {
 		
 		check = (testarCheck(oponente(jogadorAtual))? true : false);
 		corDoCheck = oponente(jogadorAtual);
+		if (testarCheckMate(oponente(jogadorAtual))) {
+			checkMate = true;
+		}
 		
 		proximoTurno();
+		
 		return (pecaXadrez) capturarPeca;
 	}
 
@@ -125,7 +134,7 @@ public class partidaXadrez {
 		jogadorAtual = (jogadorAtual == cor.BRANCO) ? cor.PRETO : cor.BRANCO;
 	}
 
-	private cor oponente(cor COR) {
+	public cor oponente(cor COR) {
 		return (COR == cor.BRANCO) ? cor.PRETO : cor.BRANCO;
 	}
 
@@ -152,6 +161,32 @@ public class partidaXadrez {
 		}
 		return false;
 	}
+	
+	private boolean testarCheckMate(cor c) {
+		if (!testarCheck(c)) {
+			return false;
+		}
+		List<peca> list = pecasNoTabuleiro.stream().filter(x -> ((pecaXadrez) x).getCOR() == c).collect(Collectors.toList());
+		
+		for (peca p : list) {
+			boolean[][] mat = p.movimentosPossiveis();
+			for (int i = 0; i < tabuleiro.getLinhas(); i++) {
+				for (int j = 0; j < tabuleiro.getColunas(); j++) {
+					if (mat[i][j]) {
+						posicao origem = ((pecaXadrez)p).getXadrezPosicao().toPosicao();
+						posicao destino = new posicao(i, j);
+						peca pecaCapturada = fazerMovimento(origem, destino);
+						boolean testCheck = testarCheck(c);
+						desfazerMovimento(origem, destino, pecaCapturada);
+						if (!testCheck) {
+							return false;
+						}
+					}
+				}
+			}
+		}
+		return true;
+	}
 
 	private void lugarNovaPeca(char coluna, int linha, pecaXadrez peca) {
 		tabuleiro.colocarPeca(peca, new xadrezPosicao(coluna, linha).toPosicao());
@@ -159,18 +194,11 @@ public class partidaXadrez {
 	}
 
 	private void iniciarPartida() {
-		lugarNovaPeca('c', 1, new torre(tabuleiro, cor.BRANCO));
-		lugarNovaPeca('c', 2, new torre(tabuleiro, cor.BRANCO));
-		lugarNovaPeca('d', 2, new torre(tabuleiro, cor.BRANCO));
-		lugarNovaPeca('e', 2, new torre(tabuleiro, cor.BRANCO));
-		lugarNovaPeca('e', 1, new torre(tabuleiro, cor.BRANCO));
-		lugarNovaPeca('d', 1, new Rei(tabuleiro, cor.BRANCO));
+		lugarNovaPeca('h', 7, new torre(tabuleiro, cor.BRANCO));
+		lugarNovaPeca('d', 1, new torre(tabuleiro, cor.BRANCO));
+		lugarNovaPeca('e', 1, new Rei(tabuleiro, cor.BRANCO));
 
-		lugarNovaPeca('c', 7, new torre(tabuleiro, cor.PRETO));
-		lugarNovaPeca('c', 8, new torre(tabuleiro, cor.PRETO));
-		lugarNovaPeca('d', 7, new torre(tabuleiro, cor.PRETO));
-		lugarNovaPeca('e', 7, new torre(tabuleiro, cor.PRETO));
-		lugarNovaPeca('e', 8, new torre(tabuleiro, cor.PRETO));
-		lugarNovaPeca('d', 8, new Rei(tabuleiro, cor.PRETO));
+		lugarNovaPeca('b', 8, new torre(tabuleiro, cor.PRETO));
+		lugarNovaPeca('a', 8, new Rei(tabuleiro, cor.PRETO));
 	}
 }

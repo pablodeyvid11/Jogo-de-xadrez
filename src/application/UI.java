@@ -58,16 +58,22 @@ public class UI {
 		escreverPecasCapturadas(capturadas);
 		System.out.println();
 		System.out.println("Turno: " + parXadr.getTurno());
-		System.out.println("Esperando o jogador: " + parXadr.getJogadorAtual());
-		if (parXadr.getCheck()) {
-			if (parXadr.getCorDoCheck() == cor.BRANCO) {
-				System.out.print(ANSI_WHITE + "CHECK!" + ANSI_RESET);
-			} else {
-				System.out.print(ANSI_YELLOW + "CHECK!" + ANSI_RESET);
+		if (!parXadr.getCheckMate()) {
+			System.out.println("Esperando o jogador: " + parXadr.getJogadorAtual());
+			if (parXadr.getCheck()) {
+				if (parXadr.getCorDoCheck() == cor.BRANCO) {
+					System.out.print(ANSI_WHITE + "CHECK!" + ANSI_RESET);
+				} else {
+					System.out.print(ANSI_YELLOW + "CHECK!" + ANSI_RESET);
+				}
 			}
+		} else {
+			System.out.println("CHECKMATE!");
+			System.out.println("Vencedor: " + parXadr.oponente(parXadr.getJogadorAtual()));
 		}
+
 	}
-	
+
 	public static void escreverTabuleiro(pecaXadrez[][] pecaxadr) {
 		for (int i = 0; i < pecaxadr.length; i++) {
 			System.out.print((8 - i) + " ");
@@ -78,7 +84,7 @@ public class UI {
 		}
 		System.out.println("  a b c d e f g h");
 	}
-	
+
 	public static void escreverTabuleiro(pecaXadrez[][] pecaxadr, boolean[][] movimentosPossiveis) {
 		for (int i = 0; i < pecaxadr.length; i++) {
 			System.out.print((8 - i) + " ");
@@ -106,9 +112,10 @@ public class UI {
 
 		System.out.print(" ");
 	}
-	
+
 	private static void escreverPecasCapturadas(List<pecaXadrez> capturadas) {
-		List<pecaXadrez> branca = capturadas.stream().filter(x -> x.getCOR() == cor.BRANCO).collect(Collectors.toList());
+		List<pecaXadrez> branca = capturadas.stream().filter(x -> x.getCOR() == cor.BRANCO)
+				.collect(Collectors.toList());
 		List<pecaXadrez> preta = capturadas.stream().filter(x -> x.getCOR() == cor.PRETO).collect(Collectors.toList());
 		System.out.println("Peças capturadas: ");
 		System.out.print("Brancas: ");
@@ -120,5 +127,5 @@ public class UI {
 		System.out.println(Arrays.toString(preta.toArray()));
 		System.out.println(ANSI_RESET);
 	}
-	
+
 }
