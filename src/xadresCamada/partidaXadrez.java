@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 import tabuleiro.peca;
 import tabuleiro.posicao;
 import tabuleiro.tab;
+import xadresCamada.pecas.Cavalo;
 import xadresCamada.pecas.Rei;
 import xadresCamada.pecas.bispo;
 import xadresCamada.pecas.peao;
@@ -200,6 +201,7 @@ public class partidaXadrez {
 
 	private void iniciarPartida() {
 		lugarNovaPeca('a', 1, new torre(tabuleiro, cor.BRANCO));
+		lugarNovaPeca('b', 1, new Cavalo(tabuleiro, cor.BRANCO));
 		lugarNovaPeca('c', 1, new bispo(tabuleiro, cor.BRANCO));
 		lugarNovaPeca('f', 1, new bispo(tabuleiro, cor.BRANCO));
 		lugarNovaPeca('e', 1, new Rei(tabuleiro, cor.BRANCO));
@@ -210,10 +212,13 @@ public class partidaXadrez {
 		lugarNovaPeca('d', 2, new peao(tabuleiro, cor.BRANCO));
 		lugarNovaPeca('e', 2, new peao(tabuleiro, cor.BRANCO));
 		lugarNovaPeca('f', 2, new peao(tabuleiro, cor.BRANCO));
+		lugarNovaPeca('g', 1, new Cavalo(tabuleiro, cor.BRANCO));
 		lugarNovaPeca('g', 2, new peao(tabuleiro, cor.BRANCO));
 		lugarNovaPeca('h', 2, new peao(tabuleiro, cor.BRANCO));
 
 		lugarNovaPeca('a', 8, new torre(tabuleiro, cor.PRETO));
+		lugarNovaPeca('b', 8, new Cavalo(tabuleiro, cor.PRETO));
+		lugarNovaPeca('g', 8, new Cavalo(tabuleiro, cor.PRETO));
 		lugarNovaPeca('e', 8, new Rei(tabuleiro, cor.PRETO));
 		lugarNovaPeca('c', 8, new bispo(tabuleiro, cor.PRETO));
 		lugarNovaPeca('f', 8, new bispo(tabuleiro, cor.PRETO));
