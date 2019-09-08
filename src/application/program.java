@@ -1,6 +1,5 @@
 package application;
 
-import tabuleiro.tab;
 import xadresCamada.partidaXadrez;
 
 public class program {
