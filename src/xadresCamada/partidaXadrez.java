@@ -8,6 +8,7 @@ import tabuleiro.peca;
 import tabuleiro.posicao;
 import tabuleiro.tab;
 import xadresCamada.pecas.Rei;
+import xadresCamada.pecas.bispo;
 import xadresCamada.pecas.peao;
 import xadresCamada.pecas.torre;
 
@@ -199,6 +200,8 @@ public class partidaXadrez {
 
 	private void iniciarPartida() {
 		lugarNovaPeca('a', 1, new torre(tabuleiro, cor.BRANCO));
+		lugarNovaPeca('c', 1, new bispo(tabuleiro, cor.BRANCO));
+		lugarNovaPeca('f', 1, new bispo(tabuleiro, cor.BRANCO));
 		lugarNovaPeca('e', 1, new Rei(tabuleiro, cor.BRANCO));
 		lugarNovaPeca('h', 1, new torre(tabuleiro, cor.BRANCO));
 		lugarNovaPeca('a', 2, new peao(tabuleiro, cor.BRANCO));
@@ -212,6 +215,8 @@ public class partidaXadrez {
 
 		lugarNovaPeca('a', 8, new torre(tabuleiro, cor.PRETO));
 		lugarNovaPeca('e', 8, new Rei(tabuleiro, cor.PRETO));
+		lugarNovaPeca('c', 8, new bispo(tabuleiro, cor.PRETO));
+		lugarNovaPeca('f', 8, new bispo(tabuleiro, cor.PRETO));
 		lugarNovaPeca('h', 8, new torre(tabuleiro, cor.PRETO));
 		lugarNovaPeca('a', 7, new peao(tabuleiro, cor.PRETO));
 		lugarNovaPeca('b', 7, new peao(tabuleiro, cor.PRETO));
