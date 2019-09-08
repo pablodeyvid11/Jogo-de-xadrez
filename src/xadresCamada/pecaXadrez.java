@@ -3,7 +3,7 @@ package xadresCamada;
 import tabuleiro.peca;
 import tabuleiro.tab;
 
-public class pecaXadrez extends peca {
+public abstract class pecaXadrez  extends peca{
 
 	private cor COR;
 
