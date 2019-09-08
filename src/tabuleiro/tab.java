@@ -44,6 +44,19 @@ public class tab {
 		pes.pos = pos;
 	}
 	
+	public peca removerPeca(posicao pos) {
+		if(!posicaoExistente(pos)) {
+			throw new boardExcessao("Posição inexistente");
+		}
+		if(Peca(pos) == null) {
+			return null;
+		}
+		peca aux = Peca(pos);
+		aux.pos = null;
+		pecas[pos.getLinha()][pos.getColuna()] = null;
+		return aux;
+	}
+	
 	private boolean posicaoExistente(int linha, int coluna) {
 		return linha >= 0 && linha < colunas && coluna >= 0 && coluna < colunas;
 	}
