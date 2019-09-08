@@ -4,6 +4,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import xadresCamada.cor;
+import xadresCamada.partidaXadrez;
 import xadresCamada.pecaXadrez;
 import xadresCamada.xadrezPosicao;
 
@@ -48,6 +49,13 @@ public class UI {
 
 	}
 
+	public static void escreverPartida(partidaXadrez parXadr) {
+		escreverTabuleiro(parXadr.getPecasXadrez());
+		System.out.println();
+		System.out.println("Turno: " + parXadr.getTurno());
+		System.out.println("Esperando o jogador: " + parXadr.getJogadorAtual());
+	}
+	
 	public static void escreverTabuleiro(pecaXadrez[][] pecaxadr) {
 		for (int i = 0; i < pecaxadr.length; i++) {
 			System.out.print((8 - i) + " ");
@@ -78,7 +86,7 @@ public class UI {
 			System.out.print("-" + ANSI_RESET);
 		} else {
 			if (peca.getCOR() == cor.BRANCO) {
-				System.out.print(ANSI_RED + peca + ANSI_RESET);
+				System.out.print(ANSI_WHITE + peca + ANSI_RESET);
 			} else {
 				System.out.print(ANSI_YELLOW + peca + ANSI_RESET);
 			}
