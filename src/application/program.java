@@ -5,6 +5,7 @@ import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
+import tabuleiro.boardExcessao;
 import xadresCamada.partidaXadrez;
 import xadresCamada.pecaXadrez;
 import xadresCamada.xadrezExcessao;
@@ -41,11 +42,14 @@ public class program {
 				System.out.println(e.getMessage());
 				System.out.println("Aperte enter para continuar:");
 				sc.nextLine();
-			} catch (InputMismatchException e) {
+			} catch (boardExcessao e) {
 				System.out.println(e.getMessage());
 				System.out.println("Aperte enter para continuar:");
 				sc.nextLine();
-
+			}catch (InputMismatchException e) {
+				System.out.println(e.getMessage());
+				System.out.println("Aperte enter para continuar:");
+				sc.nextLine();
 			}
 		}
 		UI.LimparTela();
