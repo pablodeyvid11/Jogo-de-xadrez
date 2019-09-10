@@ -38,6 +38,11 @@ public class program {
 				if (pecaCapturada != null) {
 					capturadas.add(pecaCapturada);
 				}
+				if (partida.getPromocao() != null) {
+					System.out.print("Digite a letra cujo representa a peca que sera promovida: ");
+					String escolha = sc.nextLine();
+					partida.trocarPecaPromovida(escolha);
+				}
 			} catch (xadrezExcessao e) {
 				System.out.println(e.getMessage());
 				System.out.println("Aperte enter para continuar:");

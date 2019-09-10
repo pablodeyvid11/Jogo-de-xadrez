@@ -82,7 +82,7 @@ public class UI {
 			}
 			System.out.println();
 		}
-		System.out.println("  a b c d e f g h");
+		System.out.println(ANSI_RED + "  a b c d e f g h" + ANSI_RESET);
 	}
 
 	public static void escreverTabuleiro(pecaXadrez[][] pecaxadr, boolean[][] movimentosPossiveis) {
@@ -93,7 +93,7 @@ public class UI {
 			}
 			System.out.println();
 		}
-		System.out.println("  a b c d e f g h");
+		System.out.println(ANSI_RED + "  a b c d e f g h" + ANSI_RESET);
 	}
 
 	private static void escreverPeca(pecaXadrez peca, boolean telaFundo) {
