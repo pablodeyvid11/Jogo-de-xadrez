@@ -135,10 +135,10 @@ public class partidaXadrez {
 		peca p = tabuleiro.removerPeca(pos);
 		pecasNoTabuleiro.remove(p);
 		
-		pecaXadrez novaPeca = novaPeca(escolha, promocao.getCOR());
-		tabuleiro.colocarPeca(novaPeca, pos);
-		pecasNoTabuleiro.add(novaPeca);
-		return novaPeca;
+		pecaXadrez novaeca = novaPeca(escolha, promocao.getCOR());
+		tabuleiro.colocarPeca(novaeca, pos);
+		pecasNoTabuleiro.add(novaeca);
+		return novaeca;
 	}
 	
 	private pecaXadrez novaPeca(String escolha, cor c) {
