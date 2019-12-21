@@ -7,7 +7,7 @@ public class tab {
 	
 	public tab(int linhas, int colunas) {
 		if (linhas < 1 || colunas < 1) {
-			throw new boardExcessao("Erro criando tabuleiro! É necessário que haja, ao menos, uma linha e uma coluna, consulte a documentação.");
+			throw new boardExcecao("Erro criando tabuleiro! É necessário que haja, ao menos, uma linha e uma coluna, consulte a documentação.");
 		}
 		this.linhas = linhas;
 		this.colunas = colunas;
@@ -24,21 +24,21 @@ public class tab {
 	
 	public peca Peca(int linha, int coluna) {
 		if (!posicaoExistente(linha, coluna)) {
-			throw new boardExcessao("Posição inexistente");
+			throw new boardExcecao("Posição inexistente");
 		}
 		return pecas[linha][coluna];
 	}
 	
 	public peca Peca(posicao pos) {
 		if (!posicaoExistente(pos)) {
-			throw new boardExcessao("Posição inexistente");
+			throw new boardExcecao("Posição inexistente");
 		}
 		return pecas[pos.getLinha()][pos.getColuna()];
 	}
 	
 	public void colocarPeca(peca pes, posicao pos) {
 		if (existePecaAqui(pos)) {
-			throw new boardExcessao("Já existe uma peça colocada aqui");
+			throw new boardExcecao("Já existe uma peça colocada aqui");
 		}
 		pecas[pos.getLinha()][pos.getColuna()]  = pes;
 		pes.pos = pos;
@@ -46,7 +46,7 @@ public class tab {
 	
 	public peca removerPeca(posicao pos) {
 		if(!posicaoExistente(pos)) {
-			throw new boardExcessao("Posição inexistente");
+			throw new boardExcecao("Posição inexistente");
 		}
 		if(Peca(pos) == null) {
 			return null;
@@ -67,7 +67,7 @@ public class tab {
 	
 	public boolean existePecaAqui(posicao pos) {
 		if (!posicaoExistente(pos)) {
-			throw new boardExcessao("Posição inexistente");
+			throw new boardExcecao("Posição inexistente");
 		}
 		return Peca(pos) != null;
 	}

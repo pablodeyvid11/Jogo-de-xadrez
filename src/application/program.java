@@ -5,10 +5,10 @@ import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
-import tabuleiro.boardExcessao;
+import tabuleiro.boardExcecao;
 import xadresCamada.partidaXadrez;
 import xadresCamada.pecaXadrez;
-import xadresCamada.xadrezExcessao;
+import xadresCamada.xadrezExcecao;
 import xadresCamada.xadrezPosicao;
 
 public class program {
@@ -43,11 +43,11 @@ public class program {
 					String escolha = sc.nextLine();
 					partida.trocarPecaPromovida(escolha);
 				}
-			} catch (xadrezExcessao e) {
+			} catch (xadrezExcecao e) {
 				System.out.println(e.getMessage());
 				System.out.println("Aperte enter para continuar:");
 				sc.nextLine();
-			} catch (boardExcessao e) {
+			} catch (boardExcecao e) {
 				System.out.println(e.getMessage());
 				System.out.println("Aperte enter para continuar:");
 				sc.nextLine();

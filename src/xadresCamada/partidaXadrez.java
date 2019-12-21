@@ -90,7 +90,7 @@ public class partidaXadrez {
 
 		if (testarCheck(jogadorAtual)) {
 			desfazerMovimento(origem, fim, capturarPeca);
-			throw new xadrezExcessao("Você não pode se colocar em Check");
+			throw new xadrezExcecao("Você não pode se colocar em Check");
 		}
 
 		pecaXadrez pecaMovimentada = (pecaXadrez) tabuleiro.Peca(fim);
@@ -239,20 +239,20 @@ public class partidaXadrez {
 
 	private void validarPosicaoOrigem(posicao pos) {
 		if (!tabuleiro.existePecaAqui(pos)) {
-			throw new xadrezExcessao("Não existe peça na posição de origem.");
+			throw new xadrezExcecao("Não existe peça na posição de origem.");
 		}
 		if (jogadorAtual != ((pecaXadrez) (tabuleiro.Peca(pos))).getCOR()) {
-			throw new xadrezExcessao("A peça escolhida não é sua");
+			throw new xadrezExcecao("A peça escolhida não é sua");
 		}
 
 		if (!tabuleiro.Peca(pos).existeAlgumMovimentoPossivel()) {
-			throw new xadrezExcessao("Não existe movimentos possiveis para a peça escolhida.");
+			throw new xadrezExcecao("Não existe movimentos possiveis para a peça escolhida.");
 		}
 	}
 
 	private void validarPosicaoDestino(posicao origem, posicao fim) {
 		if (!tabuleiro.Peca(origem).podeMover(fim)) {
-			throw new xadrezExcessao("A peça escolhida não pode se mover para a posição de destino");
+			throw new xadrezExcecao("A peça escolhida não pode se mover para a posição de destino");
 		}
 	}
 

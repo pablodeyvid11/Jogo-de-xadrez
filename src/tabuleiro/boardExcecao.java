@@ -1,9 +1,9 @@
 package tabuleiro;
 
-public class boardExcessao extends RuntimeException {
+public class boardExcecao extends RuntimeException {
 	private static final long serialVersionUID = 1L;
 	
-	public boardExcessao(String msg) {
+	public boardExcecao(String msg) {
 		super(msg);
 	}
 }
